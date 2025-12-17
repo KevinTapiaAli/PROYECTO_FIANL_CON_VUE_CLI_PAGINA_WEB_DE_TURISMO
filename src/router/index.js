@@ -1,23 +1,50 @@
+// src/router/index.js
+
 import { createRouter, createWebHistory } from "vue-router";
 
-import HomePage from "../pages/HomePage.vue";
-import BlogPage from "../pages/BlogPage.vue";
-import ContactoPage from "../pages/ContactoPage.vue";
-import EmpresaPage from "../pages/EmpresaPage.vue";
-import DestinosPage from "../pages/DestinosPage.vue";
-import GaleriaPage from "../pages/GaleriaPage.vue";
-import PaquetesPage from "../pages/PaquetesPage.vue";
-import TestimoniosPage from "../pages/TestimoniosPage.vue";
-
 const routes = [
-  { path: "/", component: HomePage },
-  { path: "/blog", component: BlogPage },
-  { path: "/contacto", component: ContactoPage },
-  { path: "/empresa", component: EmpresaPage },
-  { path: "/destinos", component: DestinosPage },
-  { path: "/galeria", component: GaleriaPage },
-  { path: "/paquetes", component: PaquetesPage },
-  { path: "/testimonios", component: TestimoniosPage },
+  {
+    path: "/",
+    component: () => import("../pages/HomePage.vue"), // Lazy Loading
+  },
+  {
+    path: "/blog",
+    component: () => import("../pages/BlogPage.vue"),
+  },
+  {
+    path: "/contacto",
+    component: () => import("../pages/ContactoPage.vue"),
+  },
+  {
+    path: "/empresa",
+    component: () => import("../pages/EmpresaPage.vue"),
+  },
+  {
+    path: "/destinos",
+    component: () => import("../pages/DestinosPage.vue"),
+  },
+  {
+    path: "/galeria",
+    component: () => import("../pages/GaleriaPage.vue"),
+  },
+
+  //  RUTA DE LISTA:
+  {
+    path: "/paquetes",
+    name: "ListaPaquetes",
+    component: () => import("../pages/PaquetesPage.vue"),
+  },
+
+  //  RUTA DE DETALLE
+  {
+    path: "/paquetes/:id",
+    name: "DetallePaquete",
+    component: () => import("../pages/PaquetesPage.vue"),
+  },
+  {
+    path: "/testimonios",
+    component: () => import("../pages/TestimoniosPage.vue"), // Lazy Loading
+  },
 ];
 
 export default createRouter({
