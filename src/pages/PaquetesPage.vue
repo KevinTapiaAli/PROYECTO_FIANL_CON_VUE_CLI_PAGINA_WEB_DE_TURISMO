@@ -230,7 +230,7 @@ export default {
       this.weatherError = null;
 
       try {
-        await fetchf(
+        await fetchWeather(
           this.selectedPackage.coords.lat,
           this.selectedPackage.coords.lng
         );
